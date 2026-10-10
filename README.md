@@ -19,7 +19,8 @@ assets/img/       Fotografías y logotipo autorizados
    - `assets/img/oportunidades.jpg`: foto horizontal de preparación o corte de carne.
    - Equipos: `assets/img/equipo-*.png` (ya incluidos, recortes con fondo transparente).
    - Logotipo oficial: reemplazar el texto de la marca en el encabezado (ver comentario en `index.html`).
-4. **Validar con la escuela**: condiciones de certificación, prácticas, bolsa de trabajo y comunidad; requisitos de admisión. No se publicaron inversión, horarios, fechas ni contacto adicional.
+4. **Licencia de la tipografía de títulos**: Handelson Four (`assets/fonts/`) se descargó con licencia *solo para uso personal*. Antes de publicar, comprar una licencia comercial con el autor o cambiar `--font-display` en `css/styles.css` por una fuente con licencia libre.
+5. **Validar con la escuela**: condiciones de certificación, prácticas, bolsa de trabajo y comunidad; requisitos de admisión. No se publicaron inversión, horarios, fechas ni contacto adicional.
 
 ## Comprobación
 
