@@ -205,11 +205,20 @@ button, input, select { font: inherit; color: inherit; }
 }
 .brand {
   display: inline-flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   text-decoration: none;
   color: var(--charcoal);
   margin-right: auto;
 }
+.brand-logo {
+  flex: 0 0 auto;
+  width: 56px; height: 56px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .25));
+  transition: transform .3s;
+}
+.brand:hover .brand-logo { transform: rotate(-8deg); }
+.brand-name { display: flex; flex-direction: column; }
 .brand-text {
   font-family: var(--font-display);
   font-size: 1.45rem;
@@ -880,6 +889,7 @@ select {
   padding: 34px 0 30px;
 }
 .footer-inner { display: grid; gap: 6px; justify-items: center; }
+.footer-logo { width: 96px; height: 96px; margin-bottom: 8px; }
 .footer-brand {
   display: flex;
   align-items: center;
@@ -970,8 +980,9 @@ select {
 
 @media (max-width: 640px) {
   body { font-size: 15px; }
-  .brand-text { font-size: 1.05rem; white-space: nowrap; }
-  .brand-flame { width: 90px; }
+  /* Móvil: el logotipo ya incluye el nombre de la escuela */
+  .brand-name { display: none; }
+  .brand-logo { width: 48px; height: 48px; }
   .header-cta { padding: .5em .8em; font-size: .78rem; min-height: 40px; white-space: nowrap; }
   .phone { grid-template-columns: 100px 1fr; }
 
@@ -1012,6 +1023,5 @@ select {
   .benefits { grid-template-columns: 1fr; }
   .benefit + .benefit { border-left: 0; border-top: 1px dashed rgba(42, 38, 34, .28); padding-top: 28px; }
   .module-toggle, .module-detail { margin-left: 0; }
-  .brand-text { font-size: .95rem; }
   .header-cta { font-size: .72rem; padding: .5em .6em; }
 }
