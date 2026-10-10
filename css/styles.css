@@ -340,6 +340,8 @@ button, input, select { font: inherit; color: inherit; }
 .hero-copy > :nth-child(2) { animation-delay: .1s; }
 .hero-copy > :nth-child(3) { animation-delay: .2s; }
 .hero-copy > :nth-child(4) { animation-delay: .3s; }
+.hero-copy > :nth-child(5) { animation-delay: .4s; }
+.hero-copy > :nth-child(6) { animation-delay: .5s; }
 @keyframes hero-copy-in {
   from { opacity: 0; transform: translateY(14px); }
 }
@@ -384,7 +386,18 @@ button, input, select { font: inherit; color: inherit; }
   font-weight: 600;
   letter-spacing: .01em;
 }
-.hero .btn { margin-top: 32px; }
+.hero-desc {
+  margin-top: 14px;
+  max-width: 440px;
+  font-size: 1.05rem;
+  color: #e3dcc6;
+}
+.hero .btn { margin-top: 28px; }
+.hero-note {
+  margin-top: 12px;
+  font-size: .85rem;
+  color: #bfb7a1;
+}
 
 /* --------------------------------------------------------------------------
    Secciones
@@ -1002,6 +1015,8 @@ select {
   .hero-title { font-size: clamp(2.2rem, 10vw, 2.7rem); }
   .hero-course { margin-top: 8px; font-size: 1.3rem; }
   .hero .btn { width: 100%; margin-top: 24px; }
+  .hero-desc { font-size: 1rem; margin-top: 10px; }
+  .hero-note { text-align: center; }
 
   .section-title { padding: 0 34px; }
   .section-title::before, .section-title::after { width: 20px; height: 24px; }
