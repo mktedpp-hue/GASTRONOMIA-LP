@@ -343,7 +343,7 @@ button, input, select { font: inherit; color: inherit; }
 }
 .hero-copy {
   /* Ancho disponible hasta donde empieza la foto */
-  max-width: calc(min(100vw, var(--container)) * .44 - var(--gutter) - 24px);
+  max-width: calc(min(100vw, var(--container)) * .48 - var(--gutter) - 24px);
 }
 
 .tag {
@@ -362,7 +362,7 @@ button, input, select { font: inherit; color: inherit; }
 .hero-title {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(2.7rem, 5vw, 4.1rem);
+  font-size: clamp(2.7rem, 4.6vw, 3.6rem);
   line-height: .98;
   text-transform: uppercase;
   letter-spacing: .01em;
@@ -976,9 +976,17 @@ select {
   .phone { grid-template-columns: 100px 1fr; }
 
   /* Móvil: foto vertical; se recorta poco para mantener a la vez al cocinero y la carne */
-  .hero { --hero-img-h: max(130vw, min(150vw, calc(100svh - var(--header-h) - 230px))); }
-  .hero-media img { object-position: center 72%; }
-  .hero-inner { padding-bottom: 64px; }
+  /* Se recorta solo el fondo vacío de arriba: el cocinero y la carne siempre se ven.
+     El texto entra un poco sobre el degradado inferior */
+  .hero { --hero-img-h: 138vw; }
+  .hero-media {
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 86%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 86%, transparent 100%);
+  }
+  .hero-media img { object-position: center bottom; }
+  .hero-inner { margin-top: -36px; padding-top: 0; padding-bottom: 56px; }
+  .hero-title { font-size: clamp(2.2rem, 10vw, 2.7rem); }
+  .hero-course { margin-top: 8px; font-size: 1.3rem; }
   .hero .btn { width: 100%; margin-top: 24px; }
 
   .section-title { padding: 0 34px; }
