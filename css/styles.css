@@ -1040,21 +1040,45 @@ select {
   .header-cta { padding: .5em .8em; font-size: .78rem; min-height: 40px; white-space: nowrap; }
   .phone { grid-template-columns: 100px 1fr; }
 
-  /* Móvil: foto vertical; se recorta poco para mantener a la vez al cocinero y la carne */
-  /* Se recorta solo el fondo vacío de arriba: el cocinero y la carne siempre se ven.
-     El texto entra un poco sobre el degradado inferior */
-  .hero { --hero-img-h: 138vw; }
-  .hero-media {
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 86%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 86%, transparent 100%);
+  /* Móvil: la portada ocupa exactamente la primera pantalla (sin scroll).
+     El texto toma su alto natural y la foto llena el resto; la foto es un recorte
+     de la vertical entre la cabeza del cocinero y la carne, así ambos siempre se ven */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: calc(100vh - var(--header-h));
+    height: calc(100svh - var(--header-h));
+    min-height: 560px;
   }
-  .hero-media img { object-position: center bottom; }
-  .hero-inner { margin-top: -36px; padding-top: 0; padding-bottom: 56px; }
-  .hero-title { font-size: clamp(2.2rem, 10vw, 2.7rem); }
-  .hero-course { margin-top: 8px; font-size: 1.3rem; }
-  .hero .btn { width: 100%; margin-top: 24px; }
-  .hero-desc { font-size: 1rem; margin-top: 10px; }
-  .hero-note { text-align: center; }
+  .hero-media {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    height: auto;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 93%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 93%, transparent 100%);
+  }
+  /* La foto mantiene una proporción que siempre incluye cara y carne; en pantallas bajas
+     se angosta y sus lados se funden con el carbón en vez de recortar la carne */
+  .hero-media picture {
+    position: absolute;
+    top: 0; bottom: 0; left: 50%;
+    width: auto;
+    aspect-ratio: 1024 / 1300;
+    max-width: 100%;
+    transform: translateX(-50%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+  }
+  .hero-media img { object-position: 50% 100%; }
+  .hero-inner { flex: 0 0 auto; margin-top: -10px; padding-top: 0; padding-bottom: 34px; }
+  .tag { font-size: .72rem; margin-bottom: 12px; }
+  .hero-title { font-size: clamp(1.9rem, 8.6vw, 2.5rem); }
+  .hero-course { margin-top: 4px; font-size: 1.15rem; }
+  .hero-desc { font-size: .9rem; line-height: 1.45; margin-top: 6px; }
+  .hero .btn { width: 100%; margin-top: 14px; min-height: 46px; padding-top: .7em; padding-bottom: .7em; }
+  .hero-note { margin-top: 8px; font-size: .78rem; text-align: center; }
 
   .section-title { padding: 0 34px; }
   .section-title::before, .section-title::after { width: 20px; height: 24px; }
