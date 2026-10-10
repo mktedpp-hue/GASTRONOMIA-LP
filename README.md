@@ -17,7 +17,7 @@ assets/img/       Fotografías y logotipo autorizados
 3. **Imágenes** (si falta un archivo, la página muestra un fondo o ilustración de respaldo):
    - `assets/img/hero.jpg`: foto horizontal de cocina a las brasas (sujeto a la derecha).
    - `assets/img/oportunidades.jpg`: foto horizontal de preparación o corte de carne.
-   - `assets/img/equipo-parrilla-argentina.png`, `equipo-kamado.png`, `equipo-caja-china.png`, `equipo-cilindro.png`: recortes con fondo transparente.
+   - Equipos: `assets/img/equipo-*.png` (ya incluidos, recortes con fondo transparente).
    - Logotipo oficial: reemplazar el texto de la marca en el encabezado (ver comentario en `index.html`).
 4. **Validar con la escuela**: condiciones de certificación, prácticas, bolsa de trabajo y comunidad; requisitos de admisión. No se publicaron inversión, horarios, fechas ni contacto adicional.
 
