@@ -290,30 +290,61 @@ button, input, select { font: inherit; color: inherit; }
   position: absolute; inset: 0;
   background: var(--dark-noise);
   pointer-events: none;
+  z-index: 1;
+}
+/* Escritorio: texto a la izquierda sobre carbón, foto a la derecha sin superponerse al cocinero */
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: clamp(540px, calc(100vh - var(--header-h)), 720px);
 }
 .hero-media {
   position: absolute;
-  inset: 0 0 0 38%;
+  top: 0; right: 0; bottom: 0;
+  /* La foto empieza al 44% del contenedor; en pantallas anchas se alinea con él */
+  left: calc(max(0px, (100vw - var(--container)) / 2) + min(100vw, var(--container)) * .44);
 }
+.hero-media {
+  /* Bordes difuminados: la foto se funde con el carbón sin tapar al cocinero */
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, #000 20%),
+    linear-gradient(180deg, transparent 0%, #000 12%, #000 86%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent 0%, #000 20%),
+    linear-gradient(180deg, transparent 0%, #000 12%, #000 86%, transparent 100%);
+  mask-composite: intersect;
+}
+.hero-media picture { display: block; width: 100%; height: 100%; overflow: hidden; }
 .hero-media img {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: 62% 40%;
+  transform-origin: 55% 75%;
+  animation: hero-reveal 1.8s cubic-bezier(.2, .7, .2, 1) both;
 }
-.hero-media::after {
-  content: "";
-  position: absolute; inset: 0;
-  background:
-    linear-gradient(90deg, var(--charcoal) 0%, rgba(23, 23, 21, .75) 22%, rgba(23, 23, 21, .15) 60%, rgba(23, 23, 21, .1) 100%),
-    linear-gradient(0deg, rgba(23, 23, 21, .55), transparent 40%);
+@keyframes hero-reveal {
+  from { opacity: 0; transform: scale(1.12); filter: brightness(.5); }
+  to   { opacity: 1; transform: scale(1); filter: brightness(1); }
+}
+.hero-copy > * { animation: hero-copy-in .8s ease-out both; }
+.hero-copy > :nth-child(2) { animation-delay: .1s; }
+.hero-copy > :nth-child(3) { animation-delay: .2s; }
+.hero-copy > :nth-child(4) { animation-delay: .3s; }
+@keyframes hero-copy-in {
+  from { opacity: 0; transform: translateY(14px); }
 }
 .hero-inner {
   position: relative;
-  z-index: 1;
-  padding-top: clamp(40px, 6vw, 72px);
-  padding-bottom: clamp(64px, 8vw, 100px);
+  z-index: 2;
+  width: 100%;
+  padding-top: clamp(48px, 6vw, 80px);
+  padding-bottom: clamp(72px, 8vw, 104px);
 }
-.hero-inner > * { max-width: 700px; }
+.hero-copy {
+  /* Ancho disponible hasta donde empieza la foto */
+  max-width: calc(min(100vw, var(--container)) * .44 - var(--gutter) - 24px);
+}
 
 .tag {
   display: inline-block;
@@ -331,7 +362,7 @@ button, input, select { font: inherit; color: inherit; }
 .hero-title {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(2.7rem, 6.4vw, 4.8rem);
+  font-size: clamp(2.7rem, 5vw, 4.1rem);
   line-height: .98;
   text-transform: uppercase;
   letter-spacing: .01em;
@@ -344,18 +375,7 @@ button, input, select { font: inherit; color: inherit; }
   font-weight: 600;
   letter-spacing: .01em;
 }
-.hero-desc {
-  margin-top: 14px;
-  max-width: 470px !important;
-  font-size: 1.05rem;
-  color: #e9e2cd;
-}
-.hero .btn { margin-top: 28px; }
-.hero-note {
-  margin-top: 12px;
-  font-size: .85rem;
-  color: #cfc7b1;
-}
+.hero .btn { margin-top: 32px; }
 
 /* --------------------------------------------------------------------------
    Secciones
@@ -919,10 +939,22 @@ select {
   .nav-menu li:last-child a { border-bottom: 0; }
   .nav-menu a::after { display: none; }
 
-  .hero-media { inset: 0; }
-  .hero-media::after {
-    background: linear-gradient(180deg, rgba(23, 23, 21, .55) 0%, rgba(23, 23, 21, .8) 55%, var(--charcoal) 100%);
+  /* Móvil y tableta: foto vertical arriba, texto debajo sobre el degradado */
+  .hero { display: block; min-height: 0; background: var(--charcoal); }
+  /* Altura de la foto: deja espacio para el texto y el botón en la primera pantalla.
+     Se recorta desde abajo para que la carne siempre se vea. */
+  /* Tableta: foto horizontal completa arriba */
+  .hero { --hero-img-h: calc(100vw * 2 / 3); }
+  .hero-media {
+    position: relative;
+    top: auto; left: auto; right: auto; bottom: auto;
+    height: var(--hero-img-h);
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 92%, transparent 100%);
   }
+  .hero-media img { object-position: center 60%; transform-origin: 50% 80%; }
+  .hero-inner { padding-top: 22px; }
+  .hero-copy { max-width: 560px; }
 
   .dark-media { width: 100%; height: 300px; opacity: .55; }
   .outcomes { grid-template-columns: 1fr; gap: 26px; margin-top: 40px; }
@@ -943,9 +975,11 @@ select {
   .header-cta { padding: .5em .8em; font-size: .78rem; min-height: 40px; white-space: nowrap; }
   .phone { grid-template-columns: 100px 1fr; }
 
-  .hero-inner { padding-top: 36px; padding-bottom: 64px; }
-  .hero .btn { width: 100%; }
-  .hero-note { text-align: center; }
+  /* Móvil: foto vertical; se recorta poco para mantener a la vez al cocinero y la carne */
+  .hero { --hero-img-h: max(130vw, min(150vw, calc(100svh - var(--header-h) - 230px))); }
+  .hero-media img { object-position: center 72%; }
+  .hero-inner { padding-bottom: 64px; }
+  .hero .btn { width: 100%; margin-top: 24px; }
 
   .section-title { padding: 0 34px; }
   .section-title::before, .section-title::after { width: 20px; height: 24px; }

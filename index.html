@@ -45,22 +45,24 @@
     <!-- 02 Gancho de venta -->
     <section class="hero" id="curso" aria-labelledby="hero-title">
       <div class="hero-media" aria-hidden="true">
-        <!-- Fotografía autorizada de cocina a las brasas -->
-        <img src="assets/img/hero.jpg" alt="" class="js-optional-img" fetchpriority="high">
+        <picture>
+          <source media="(max-width: 640px)" srcset="assets/img/hero-vertical-640.webp 640w, assets/img/hero-vertical.webp 1024w" sizes="100vw" type="image/webp">
+          <img src="assets/img/hero-horizontal.webp" srcset="assets/img/hero-horizontal-960.webp 960w, assets/img/hero-horizontal.webp 1536w" sizes="(max-width: 860px) 100vw, 60vw" alt="" class="js-optional-img" fetchpriority="high" width="1536" height="1024">
+        </picture>
       </div>
       <div class="container hero-inner">
-        <p class="tag">Curso presencial · 3 meses</p>
-        <h1 id="hero-title" class="hero-title">
-          <span class="t-orange">Domina el fuego.</span>
-          <span class="t-cream">Transforma tu pasión.</span>
-        </h1>
-        <p class="hero-course">Gastronomía en Brasas</p>
-        <p class="hero-desc">Aprende técnicas a las brasas y da el siguiente paso en tu camino gastronómico.</p>
-        <a class="btn btn-red btn-lg" href="#formulario">
-          Quiero información del curso
-          <svg class="btn-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>
-        </a>
-        <p class="hero-note">Completa el formulario y conoce los detalles.</p>
+        <div class="hero-copy">
+          <p class="tag">Curso presencial · 3 meses</p>
+          <h1 id="hero-title" class="hero-title">
+            <span class="t-orange">Domina el fuego.</span>
+            <span class="t-cream">Transforma tu pasión.</span>
+          </h1>
+          <p class="hero-course">Gastronomía en Brasas</p>
+          <a class="btn btn-red btn-lg" href="#formulario">
+            Quiero información del curso
+            <svg class="btn-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>
+          </a>
+        </div>
       </div>
       <div class="torn torn-bottom torn-cream" aria-hidden="true"></div>
     </section>

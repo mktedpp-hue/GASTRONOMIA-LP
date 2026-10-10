@@ -15,7 +15,7 @@ assets/img/       Fotografías y logotipo autorizados
 1. **Destino del formulario**: completar `formEndpoint` en `js/config.js` (servicio de formularios que reenvíe al correo comercial, webhook del CRM, etc.). Se envía un POST JSON con `nombre`, `whatsapp`, `correo`, `objetivo`, `consentimiento`, `curso`, `origen` y `fecha`. El mensaje de éxito solo aparece si el destino responde con un estado 2xx; mientras esté vacío, el formulario muestra el error de envío.
 2. **Política de privacidad**: completar `privacyUrl` en `js/config.js` (enlace del formulario y del pie).
 3. **Imágenes** (si falta un archivo, la página muestra un fondo o ilustración de respaldo):
-   - `assets/img/hero.jpg`: foto horizontal de cocina a las brasas (sujeto a la derecha).
+   - Portada: `assets/img/hero-horizontal.webp` (escritorio y tableta) y `hero-vertical.webp` (móvil), con versiones reducidas; ya incluidas.
    - `assets/img/oportunidades.jpg`: foto horizontal de preparación o corte de carne.
    - Equipos: `assets/img/equipo-*.png` (ya incluidos, recortes con fondo transparente).
    - Logotipo oficial: reemplazar el texto de la marca en el encabezado (ver comentario en `index.html`).
