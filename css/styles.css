@@ -715,18 +715,23 @@ button, input, select { font: inherit; color: inherit; }
    -------------------------------------------------------------------------- */
 .form-section {
   overflow: hidden;
-  padding-bottom: clamp(72px, 9vw, 120px);
+  padding-top: clamp(48px, 5vw, 72px);
+  padding-bottom: clamp(200px, 22vw, 340px);
   border-top: 1px dashed rgba(42, 38, 34, .2);
-}
-.embers {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 55%;
-  pointer-events: none;
+  /* Fondo: papel con brasas abajo a la izquierda e ilustraciones a la derecha.
+     Anclado abajo para que las brasas queden bajo el texto y no detrás */
+  /* Proporción de la imagen 1983 × 793 (alto = ancho × 0,4) */
+  --form-bg-w: max(100vw, 1300px);
+  --form-bg-size: var(--form-bg-w) calc(var(--form-bg-w) * .4);
+  --form-bg-img: url("../assets/img/fondo-formulario.webp");
+  /* El degradado comparte tamaño y posición con la imagen y funde su borde superior con el papel */
   background:
-    radial-gradient(ellipse 30% 45% at 8% 100%, rgba(245, 120, 30, .55), transparent 70%),
-    radial-gradient(ellipse 22% 30% at 22% 100%, rgba(201, 17, 19, .35), transparent 70%),
-    radial-gradient(ellipse 25% 35% at 95% 100%, rgba(245, 120, 30, .35), transparent 70%);
+    linear-gradient(180deg, #F4EAD0 0%, rgba(244, 234, 208, 0) 35%) no-repeat left bottom / var(--form-bg-size),
+    var(--form-bg-img) no-repeat left bottom / var(--form-bg-size),
+    #F4EAD0;
+}
+@media (max-width: 1000px) {
+  .form-section { --form-bg-img: url("../assets/img/fondo-formulario-1000.webp"); }
 }
 .form-grid {
   position: relative;
@@ -734,8 +739,9 @@ button, input, select { font: inherit; color: inherit; }
   display: grid;
   grid-template-columns: 1fr minmax(0, 470px);
   gap: clamp(32px, 6vw, 80px);
-  align-items: center;
+  align-items: start;
 }
+.form-copy { padding-top: clamp(16px, 4vw, 64px); }
 .cta-title {
   font-family: var(--font-display);
   font-weight: 400;
@@ -970,6 +976,7 @@ select {
   .profiles { grid-template-columns: 1fr; gap: 26px; max-width: 520px; margin-left: auto; margin-right: auto; }
 
   .form-grid { grid-template-columns: 1fr; }
+  .form-section { --form-bg-w: 230vw; padding-bottom: 230px; }
   .form-copy { text-align: center; }
   .cta-lead { margin-left: auto; margin-right: auto; }
 }
