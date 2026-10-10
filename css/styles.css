@@ -889,6 +889,48 @@ select {
   border-left: 4px solid var(--red);
 }
 
+/* Tableta y móvil: texto arriba, formulario debajo y brasas al pie */
+@media (max-width: 1100px) {
+  .form-section { --form-bg-w: 160vw; padding-bottom: 32vw; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-copy { text-align: center; }
+  .cta-lead { margin-left: auto; margin-right: auto; }
+  .form-card { width: 100%; max-width: 560px; margin: 0 auto; }
+}
+@media (max-width: 640px) {
+  .form-section { --form-bg-w: 230vw; padding-bottom: 230px; }
+}
+/* Escritorio: la sección toma la proporción de la imagen (2,5 : 1) y la imagen la cubre
+   entera, sin estirarse ni dejar franjas de color; solo se recorta un poco a la derecha */
+@media (min-width: 1101px) {
+  .form-section {
+    display: flex;
+    align-items: center;
+    min-height: 40vw;
+    padding-top: clamp(40px, 4vw, 64px);
+    padding-bottom: clamp(40px, 4vw, 64px);
+    background: var(--form-bg-img) no-repeat left bottom / cover, #F4EAD0;
+  }
+  .form-section > .container { width: 100%; }
+  .form-grid { align-items: center; }
+  /* El texto empieza a la derecha de las llamas del borde izquierdo */
+  .form-copy {
+    padding-top: 0;
+    padding-left: max(0px, calc(240px - max(var(--gutter), (100vw - var(--container)) / 2 + var(--gutter))));
+  }
+  .cta-title { font-size: clamp(3rem, 5.6vw, 5rem); }
+  /* Halo del color del papel: el texto se lee aunque lo roce una llama */
+  .form-copy p { text-shadow: 0 0 6px #F4EAD0, 0 0 12px #F4EAD0, 0 0 18px #F4EAD0; }
+  /* Formulario más compacto para que la sección no se alargue */
+  .form-card { padding: 26px 30px; }
+  .form-title { margin-bottom: 14px; }
+  .form-card .field { margin-bottom: 12px; }
+  .form-card input[type="text"],
+  .form-card input[type="tel"],
+  .form-card input[type="email"],
+  .form-card select { min-height: 42px; padding-top: 8px; padding-bottom: 8px; }
+}
+
 /* --------------------------------------------------------------------------
    09 Pie
    -------------------------------------------------------------------------- */
@@ -988,10 +1030,6 @@ select {
 
   .profiles { grid-template-columns: 1fr; gap: 26px; max-width: 520px; margin-left: auto; margin-right: auto; }
 
-  .form-grid { grid-template-columns: 1fr; }
-  .form-section { --form-bg-w: 230vw; padding-bottom: 230px; }
-  .form-copy { text-align: center; }
-  .cta-lead { margin-left: auto; margin-right: auto; }
 }
 
 @media (max-width: 640px) {
