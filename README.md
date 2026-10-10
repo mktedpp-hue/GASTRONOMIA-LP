@@ -16,7 +16,7 @@ assets/img/       Fotografías y logotipo autorizados
 2. **Política de privacidad**: completar `privacyUrl` en `js/config.js` (enlace del formulario y del pie).
 3. **Imágenes** (si falta un archivo, la página muestra un fondo o ilustración de respaldo):
    - Portada: `assets/img/hero-horizontal.webp` (escritorio y tableta) y `hero-vertical.webp` (móvil), con versiones reducidas; ya incluidas.
-   - `assets/img/oportunidades.jpg`: foto horizontal de preparación o corte de carne.
+   - Oportunidades: `assets/img/oportunidades.webp` (ya incluida).
    - Equipos: `assets/img/equipo-*.png` (ya incluidos, recortes con fondo transparente).
    - Logotipo: `assets/img/logo-edp-192.webp` (encabezado y pie), con favicon e ícono para iPhone.
 4. **Licencia de la tipografía de títulos**: Handelson Four (`assets/fonts/`) se descargó con licencia *solo para uso personal*. Antes de publicar, comprar una licencia comercial con el autor o cambiar `--font-display` en `css/styles.css` por una fuente con licencia libre.

@@ -629,32 +629,32 @@ button, input, select { font: inherit; color: inherit; }
   color: var(--cream);
   padding-bottom: clamp(72px, 8vw, 104px);
 }
+/* Foto de fondo en la parte superior: el título va sobre ella (lado izquierdo, más oscuro)
+   y los resultados quedan debajo, sobre el carbón */
 .dark-media {
   position: absolute;
-  top: 0; right: 0;
-  width: 58%;
-  height: 62%;
-  background:
-    radial-gradient(ellipse 60% 50% at 60% 70%, rgba(245, 120, 30, .35), transparent 70%),
-    radial-gradient(ellipse 40% 40% at 75% 60%, rgba(120, 50, 30, .6), transparent 70%);
+  top: 0; left: 0; right: 0;
+  height: 74%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
 }
 .dark-media img {
   width: 100%; height: 100%;
   object-fit: cover;
+  object-position: 60% 45%;
 }
 .dark-media::after {
   content: "";
   position: absolute; inset: 0;
-  background:
-    linear-gradient(90deg, var(--charcoal) 0%, rgba(23, 23, 21, .3) 45%, transparent 100%),
-    linear-gradient(0deg, var(--charcoal) 0%, transparent 45%);
+  background: linear-gradient(90deg, rgba(23, 23, 21, .9) 0%, rgba(23, 23, 21, .6) 30%, rgba(23, 23, 21, 0) 60%);
 }
 .dark .container { position: relative; z-index: 1; }
 .dark .section-title { font-size: clamp(2.6rem, 5.8vw, 4.2rem); line-height: 1.02; }
 .outcomes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: clamp(56px, 9vw, 130px);
+  margin-top: clamp(160px, 26vw, 360px);
 }
 .outcome {
   display: flex;
@@ -958,8 +958,12 @@ select {
   .hero-inner { padding-top: 22px; }
   .hero-copy { max-width: 560px; }
 
-  .dark-media { width: 100%; height: 300px; opacity: .55; }
-  .outcomes { grid-template-columns: 1fr; gap: 26px; margin-top: 40px; }
+  .dark-media { height: 440px; }
+  .dark-media img { object-position: 62% 50%; }
+  .dark-media::after {
+    background: linear-gradient(180deg, rgba(23, 23, 21, .85) 0%, rgba(23, 23, 21, .35) 45%, rgba(23, 23, 21, 0) 70%);
+  }
+  .outcomes { grid-template-columns: 1fr; gap: 26px; margin-top: 230px; }
   .outcome, .outcome:first-child { padding: 0; }
   .outcome + .outcome { border-left: 0; border-top: 1px solid rgba(244, 238, 219, .15); padding-top: 26px; }
 
